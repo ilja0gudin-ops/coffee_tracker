@@ -1,115 +1,100 @@
 /* СУКП Pro - Кастомные стили */
 
-body {
-    background-color: #f8f9fa;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Анимации для элементов интерфейса */
+.jumbotron {
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+    border: 1px solid #dee2e6;
 }
 
-/* Навигационная панель */
+.card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Стили для навигации */
 .navbar-brand {
     font-weight: bold;
     font-size: 1.5rem;
 }
 
-/* Карточки функций на главной */
-.feature-card {
-    border: 1px solid #e9ecef;
-    border-radius: 10px;
-    transition: transform 0.2s, box-shadow 0.2s;
+/* Стили для карточек статистики */
+.card.text-white.bg-primary {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
 }
 
-.feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+.card.text-white.bg-success {
+    background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%) !important;
 }
 
-/* Анимации для статистики */
-.card {
-    transition: transform 0.2s;
-}
-
-.card:hover {
-    transform: translateY(-2px);
-}
-
-/* Специфические стили для кофейной темы */
-.jumbotron {
-    background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
-    color: white;
-}
-
-.bg-primary {
-    background: linear-gradient(135deg, #6f42c1 0%, #6610f2 100%) !important;
-}
-
-.bg-success {
-    background: linear-gradient(135deg, #20c997 0%, #198754 100%) !important;
-}
-
-.bg-warning {
-    background: linear-gradient(135deg, #fd7e14 0%, #ffc107 100%) !important;
-}
-
-/* Стили для форм */
-.form-select:focus, .form-control:focus {
-    border-color: #8B4513;
-    box-shadow: 0 0 0 0.2rem rgba(139, 69, 19, 0.25);
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
-    border-color: #8B4513;
-}
-
-.btn-primary:hover {
-    background: linear-gradient(135deg, #A0522D 0%, #8B4513 100%);
-    border-color: #654321;
-}
-
-.btn-success {
-    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-    border-color: #28a745;
-}
-
-/* Адаптивность для мобильных */
-@media (max-width: 768px) {
-    .display-4 {
-        font-size: 2rem;
-    }
-    
-    .jumbotron {
-        padding: 2rem 1rem !important;
-    }
-}
-
-/* Специальные стили для кофейных иконок */
-.coffee-icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-/* Анимация загрузки (можно использовать для будущих улучшений) */
-@keyframes coffeeBrew {
-    0% { transform: scale(0.8); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
-}
-
-.animate-brew {
-    animation: coffeeBrew 0.5s ease-out;
+.card.text-white.bg-warning {
+    background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%) !important;
 }
 
 /* Стили для таблиц */
 .table th {
     border-top: none;
-    background-color: #f8f9fa;
     font-weight: 600;
+    color: #495057;
 }
 
-/* Кастомные уведомления */
+/* Стили для кнопок */
+.btn-lg {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .jumbotron {
+        padding: 2rem 1rem !important;
+    }
+    
+    .display-4 {
+        font-size: 2rem;
+    }
+}
+
+/* Специальные стили для кофейной темы */
+.coffee-theme {
+    color: #6f4e37;
+}
+
+.quick-drink {
+    transition: all 0.2s ease;
+}
+
+.quick-drink:hover {
+    background-color: #6f4e37 !important;
+    border-color: #6f4e37 !important;
+    color: white !important;
+}
+
+/* Стили для алертов */
+.alert {
+    border: none;
+    border-radius: 8px;
+}
+
 .alert-success {
-    border-left: 4px solid #198754;
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    color: #155724;
 }
 
 .alert-danger {
-    border-left: 4px solid #dc3545;
+    background: linear-gradient(135deg, #f8d7da 0%, #f1b0b7 100%);
+    color: #721c24;
+}
+
+/* Кастомные скругления */
+.rounded {
+    border-radius: 12px !important;
+}
+
+.card {
+    border-radius: 12px;
+    overflow: hidden;
 }

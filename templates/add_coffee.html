@@ -5,12 +5,12 @@
     <div class="col-md-6 mx-auto">
         <div class="card">
             <div class="card-header">
-                <h4>☕ Добавить потребление кофе</h4>
+                <h4>➕ Добавить потребление кофе</h4>
             </div>
             <div class="card-body">
                 <form method="POST">
                     <div class="mb-3">
-                        <label for="employee_id" class="form-label">Сотрудник</label>
+                        <label for="employee_id" class="form-label">👤 Сотрудник</label>
                         <select class="form-select" id="employee_id" name="employee_id" required>
                             <option value="">Выберите сотрудника...</option>
                             {% for employee in employees %}
@@ -20,19 +20,19 @@
                     </div>
                     
                     <div class="mb-3">
-                        <label for="drink_id" class="form-label">Напиток</label>
+                        <label for="drink_id" class="form-label">☕ Напиток</label>
                         <select class="form-select" id="drink_id" name="drink_id" required>
                             <option value="">Выберите напиток...</option>
                             {% for drink in drinks %}
                             <option value="{{ drink[0] }}" data-cost="{{ drink[2] }}">
-                                {{ drink[1] }} ({{ drink[2] }} ₽)
+                                {{ drink[1] }} ({{ "%.2f"|format(drink[2]) }} ₽)
                             </option>
                             {% endfor %}
                         </select>
                     </div>
                     
                     <div class="mb-3">
-                        <label for="notes" class="form-label">Примечания (необязательно)</label>
+                        <label for="notes" class="form-label">📝 Примечания (необязательно)</label>
                         <textarea class="form-control" id="notes" name="notes" rows="2" 
                                   placeholder="Например: 'С двойной порцией', 'С миндальным молоком'..."></textarea>
                     </div>
@@ -49,21 +49,37 @@
             </div>
         </div>
         
-        <!-- Информация о напитках -->
+        <!-- Быстрый доступ к часто используемым вариантам -->
         <div class="card mt-4">
             <div class="card-header">
-                <h6>ℹ️ Справочник напитков</h6>
+                <h6>⚡ Быстрый выбор</h6>
             </div>
             <div class="card-body">
-                <div class="row">
+                <div class="d-flex flex-wrap gap-2">
                     {% for drink in drinks %}
-                    <div class="col-md-6 mb-2">
-                        <strong>{{ drink[1] }}</strong>: {{ drink[2] }} ₽
-                    </div>
+                    <button type="button" class="btn btn-outline-primary btn-sm quick-drink" 
+                            data-drink-id="{{ drink[0] }}">
+                        {{ drink[1] }}
+                    </button>
                     {% endfor %}
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+// Скрипт для быстрого выбора напитков
+document.addEventListener('DOMContentLoaded', function() {
+    const quickDrinkButtons = document.querySelectorAll('.quick-drink');
+    const drinkSelect = document.getElementById('drink_id');
+    
+    quickDrinkButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const drinkId = this.getAttribute('data-drink-id');
+            drinkSelect.value = drinkId;
+        });
+    });
+});
+</script>
 {% endblock %}

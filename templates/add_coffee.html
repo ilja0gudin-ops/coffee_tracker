@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h4>☕ Добавить потребление кофе</h4>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="employee_id" class="form-label">Сотрудник</label>
+                        <select class="form-select" id="employee_id" name="employee_id" required>
+                            <option value="">Выберите сотрудника...</option>
+                            {% for employee in employees %}
+                            <option value="{{ employee[0] }}">{{ employee[1] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="drink_id" class="form-label">Напиток</label>
+                        <select class="form-select" id="drink_id" name="drink_id" required>
+                            <option value="">Выберите напиток...</option>
+                            {% for drink in drinks %}
+                            <option value="{{ drink[0] }}" data-cost="{{ drink[2] }}">
+                                {{ drink[1] }} ({{ drink[2] }} ₽)
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="notes" class="form-label">Примечания (необязательно)</label>
+                        <textarea class="form-control" id="notes" name="notes" rows="2" 
+                                  placeholder="Например: 'С двойной порцией', 'С миндальным молоком'..."></textarea>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-success btn-lg">
+                            ✅ Зафиксировать потребление
+                        </button>
+                        <a href="{{ url_for('dashboard') }}" class="btn btn-outline-secondary">
+                            📊 Перейти к статистике
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Информация о напитках -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h6>ℹ️ Справочник напитков</h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {% for drink in drinks %}
+                    <div class="col-md-6 mb-2">
+                        <strong>{{ drink[1] }}</strong>: {{ drink[2] }} ₽
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

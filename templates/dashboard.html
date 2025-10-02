@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1>📊 Статистика кофе-потребления</h1>
+        <p class="text-muted">Данные за последние 7 дней</p>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <!-- Общая статистика -->
+    <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Всего чашек</h5>
+                <h2 class="card-text">{{ stats.total_stats[0] or 0 }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Общая стоимость</h5>
+                <h2 class="card-text">{{ "%.2f"|format(stats.total_stats[1] or 0) }} ₽</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-warning mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Кофеина потреблено</h5>
+                <h2 class="card-text">{{ stats.total_stats[2] or 0 }} мг</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <!-- Топ потребителей -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>🏆 Топ-5 кофеманов недели</h5>
+            </div>
+            <div class="card-body">
+                {% if stats.top_consumers %}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Сотрудник</th>
+                            <th>Чашек</th>
+                            <th>Стоимость</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for name, count, cost in stats.top_consumers %}
+                        <tr>
+                            <td>{{ name }}</td>
+                            <td>{{ count }}</td>
+                            <td>{{ "%.2f"|format(cost) }} ₽</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p class="text-muted">Пока нет данных за неделю</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Статистика по напиткам -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>📈 Популярность напитков</h5>
+            </div>
+            <div class="card-body">
+                {% if stats.drink_stats %}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Напиток</th>
+                            <th>Количество</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for name, count in stats.drink_stats %}
+                        <tr>
+                            <td>{{ name }}</td>
+                            <td>{{ count }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p class="text-muted">Пока нет данных за неделю</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

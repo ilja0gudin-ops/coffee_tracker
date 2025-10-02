@@ -1,0 +1,115 @@
+/* СУКП Pro - Кастомные стили */
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Навигационная панель */
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Карточки функций на главной */
+.feature-card {
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Анимации для статистики */
+.card {
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+/* Специфические стили для кофейной темы */
+.jumbotron {
+    background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+    color: white;
+}
+
+.bg-primary {
+    background: linear-gradient(135deg, #6f42c1 0%, #6610f2 100%) !important;
+}
+
+.bg-success {
+    background: linear-gradient(135deg, #20c997 0%, #198754 100%) !important;
+}
+
+.bg-warning {
+    background: linear-gradient(135deg, #fd7e14 0%, #ffc107 100%) !important;
+}
+
+/* Стили для форм */
+.form-select:focus, .form-control:focus {
+    border-color: #8B4513;
+    box-shadow: 0 0 0 0.2rem rgba(139, 69, 19, 0.25);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+    border-color: #8B4513;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #A0522D 0%, #8B4513 100%);
+    border-color: #654321;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    border-color: #28a745;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2rem;
+    }
+    
+    .jumbotron {
+        padding: 2rem 1rem !important;
+    }
+}
+
+/* Специальные стили для кофейных иконок */
+.coffee-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Анимация загрузки (можно использовать для будущих улучшений) */
+@keyframes coffeeBrew {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-brew {
+    animation: coffeeBrew 0.5s ease-out;
+}
+
+/* Стили для таблиц */
+.table th {
+    border-top: none;
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+/* Кастомные уведомления */
+.alert-success {
+    border-left: 4px solid #198754;
+}
+
+.alert-danger {
+    border-left: 4px solid #dc3545;
+}
